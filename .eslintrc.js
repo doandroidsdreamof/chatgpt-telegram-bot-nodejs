@@ -1,7 +1,6 @@
 module.exports = {
   env: {
     commonjs: true,
-    es6: true,
     node: true
   },
   extends: ['airbnb-base', 'prettier', 'plugin:node/recommended'],
@@ -20,7 +19,10 @@ module.exports = {
     'func-names': 'off',
     'no-plusplus': 'off',
     'no-process-exit': 'off',
-    'class-methods-use-this': 'off'
+    'class-methods-use-this': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'node/no-unsupported-features/node-builtins':
+      'warn'
   },
   ignorePatterns: ['/*', '!/src']
 };
