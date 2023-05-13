@@ -1,15 +1,21 @@
 const Telegraf = require('telegraf');
 require('dotenv').config();
-const express = require('express');
 const webhookParams = require('../constant/constant');
+
+const { url } = webhookParams.module;
 
 const initBot = () => {
   console.time('bot created');
-  const bot = new Telegraf(process.env.BOT_TOKEN);
+  if (process.env.NODE_ENV === 'development') {
+    const bot = new Telegraf(process.env.BOT_TOKEN, { polling: true });
+    bot.launch();
+    return bot;
+  }
+  if (process.env.NODE_ENV === 'production') {
+    const bot = new Telegraf(process.env.BOT_TOKEN);
+    bot.telegram.setWebhook(url);
+  }
   console.timeEnd('bot created');
-  return bot;
 };
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
-
-module.exports = bot;
+module.exports = { initBot };
