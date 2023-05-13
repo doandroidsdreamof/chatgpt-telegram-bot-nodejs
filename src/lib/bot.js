@@ -28,8 +28,9 @@ const initBot = () => {
     bot.on('text', (ctx) => {
       console.info(`bot handle msg && bot.js =>`, ctx.message.text);
       const { text } = ctx.message;
+      const chatID = ctx.chat.id;
       if (text != null) {
-        postRequest(baseURL, endAskGpt, text).catch((err) => console.log(err));
+        postRequest(baseURL, endAskGpt, text, chatID).catch((err) => console.log(err));
       }
     });
     bot.launch();

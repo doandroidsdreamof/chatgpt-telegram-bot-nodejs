@@ -1,11 +1,15 @@
 const axios = require('axios');
 
-const postRequest = async (baseURL, endPoint, payload) => {
+const postRequest = async (baseURL, endPoint, payload, chatID) => {
   try {
     if (payload) {
+      const payloadObj = {
+        payload,
+        chatID
+      };
       axios
         .post(`${baseURL}${endPoint}`, {
-          data: payload,
+          data: payloadObj,
           headers: {
             'Content-Type': 'application/json'
           }

@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
+    "dev": "pm2 start src/index.js --watch --log",
     "lint": "eslint .",
     "lint:fix": "eslint --fix --ext .js,.jsx ."
   },
@@ -21,6 +22,7 @@
     "express-rate-limit": "^6.7.0",
     "nodemon": "^2.0.22",
     "openai": "^3.2.1",
+    "pm2": "^5.3.0",
     "telegraf": "^3.38.0"
   },
   "devDependencies": {

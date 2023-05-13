@@ -1,9 +1,13 @@
 const asyncHandler = require('express-async-handler');
+const Telegraf = require('telegraf');
 const { openai } = require('../lib/chatGPT');
 const webhookParams = require('../constant/constant');
 const { postRequest } = require('../lib/postRequest');
+require('dotenv').config();
 
 const { baseURL, endResGpt } = webhookParams.module;
+
+const bot = new Telegraf(process.env.BOT_TOKEN, { polling: true });
 
 const sendMessage = asyncHandler(async (req, res) => {
   const { data: prompt } = req.body;
@@ -15,10 +19,13 @@ const sendMessage = asyncHandler(async (req, res) => {
       model: 'gpt-3.5-turbo',
       temperature: 0,
       max_tokens: 1000,
-      messages: [{ role: 'user', content: prompt }]
+      messages: [{ role: 'user', content: prompt.payload }]
     });
     const completion = response.data.choices[0].message?.content;
     console.log('getMessage => ', completion);
+
+    bot.telegram.sendMessage(prompt.chatID, completion);
+    return;
   } catch (error) {
     console.log(error);
   }
