@@ -3,7 +3,7 @@ const axios = require('axios');
 const postRequest = async (baseURL, endPoint, payload, chatID) => {
   try {
     if (payload) {
-      const payloadObj = {
+      const payloadObj = await {
         payload,
         chatID
       };

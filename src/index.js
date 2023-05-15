@@ -16,9 +16,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(requestMeasureLogger);
-app.use(requestMeasureLogger, limitRate);
-app.use(requestMeasureLogger, promptRouter);
+// app.use(requestMeasureLogger);
+app.use(limitRate);
+app.use(promptRouter);
 
 if (process.env.NODE_ENV === 'production') {
   bot.telegram.setWebhook(url);
