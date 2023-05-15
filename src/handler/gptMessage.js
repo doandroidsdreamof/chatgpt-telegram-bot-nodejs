@@ -8,6 +8,7 @@ require('dotenv').config();
 const { baseURL, endResGpt } = webhookParams.module;
 
 const bot = new Telegraf(process.env.BOT_TOKEN, { polling: true });
+console.log("🚀 ~ file: gptMessage.js:11 ~ bot:", bot)
 
 const sendMessage = asyncHandler(async (req, res) => {
   const { data: prompt } = req.body;
