@@ -2,7 +2,9 @@ require('dotenv').config();
 
 const token = process.env.BOT_TOKEN;
 const locale = `https://b33e-78-179-107-134.ngrok-free.app`;
-const url = `https://api.telegram.org/bot${token}/setWebhook?url=${locale}`;
+
+//* getUpdates?offset=-1 =>  get last message //
+const url = `https://api.telegram.org/bot${token}/setWebhook?url=${locale}/getUpdates?offset=-1`;
 const urlInfo = `https://api.telegram.org/bot${token}/getWebhookInfo`;
 const baseURL = process.env.BASE_URL;
 

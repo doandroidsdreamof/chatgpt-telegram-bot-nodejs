@@ -5,7 +5,6 @@ const { postRequest } = require('./postRequest');
 
 const { baseURL, endAskGpt } = webhookParams.module;
 
-
 const initBot = () => {
   console.time('bot created');
   let polling = true;

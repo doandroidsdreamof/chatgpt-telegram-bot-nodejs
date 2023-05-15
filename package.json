@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
-    "dev": "pm2 start src/index.js --watch --log",
+    "start": "NODE_ENV=development nodemon src/index.js",
+    "dev": "NODE_ENV=development pm2 start src/index.js --watch --log",
     "lint": "eslint .",
     "lint:fix": "eslint --fix --ext .js,.jsx ."
   },
